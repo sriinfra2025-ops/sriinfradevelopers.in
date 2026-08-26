@@ -129,7 +129,7 @@ jobs:
           <Sparkles className="w-4 h-4" /> The Exact 3-Step Fix for InvalidDNSError
         </div>
         <h3 className="text-2xl font-bold text-white mb-4">
-          How to connect <span className="text-amber-400">sriinfradevelopers.in</span> to GitHub Pages
+          How to connect <span className="text-amber-400">sriinfradevlopers.in</span> to GitHub Pages
         </h3>
         <p className="text-slate-300 text-sm mb-6 leading-relaxed">
           The error occurs because your domain registrar (GoDaddy, Hostinger, BigRock, etc.) doesn&apos;t have GitHub&apos;s DNS records yet. Follow these 3 steps to fix it in under 3 minutes:
@@ -205,7 +205,7 @@ jobs:
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-6">
           <div>
             <h3 className="text-xl font-bold text-white flex items-center gap-2">
-              <Server className="w-5 h-5 text-amber-400" /> Required DNS Records for sriinfradevelopers.in
+              <Server className="w-5 h-5 text-amber-400" /> Required DNS Records for sriinfradevlopers.in
             </h3>
             <p className="text-xs text-slate-400 mt-1">
               Add these exact records in your domain registrar DNS zone file.

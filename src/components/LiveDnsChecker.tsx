@@ -185,7 +185,7 @@ export const LiveDnsChecker: React.FC = () => {
           type="text"
           value={domain}
           onChange={(e) => setDomain(e.target.value)}
-          placeholder="sriinfradevelopers.in"
+          placeholder="sriinfradevlopers.in"
           className="flex-1 bg-slate-900 border border-slate-700 focus:border-amber-400 focus:ring-1 focus:ring-amber-400 text-white px-4 py-2 rounded-lg text-sm font-mono outline-none transition"
         />
         <button

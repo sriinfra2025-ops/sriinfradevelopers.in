@@ -41,7 +41,7 @@ export const GITHUB_CNAME_RECORDS: DnsRecord[] = [
     host: 'www',
     value: 'sriinfra2025-ops.github.io.',
     ttl: '3600 (1 Hour) / Automatic',
-    purpose: 'Redirects www.sriinfradevelopers.in to GitHub Pages repository',
+    purpose: 'Redirects www.sriinfradevlopers.in to GitHub Pages repository',
     recommended: true,
   },
 ];
@@ -88,7 +88,7 @@ export const REGISTRAR_GUIDES: RegistrarGuideItem[] = [
       {
         stepNumber: 1,
         title: 'Sign in & Go to My Products',
-        description: 'Log into godaddy.com, open "My Products" and locate sriinfradevelopers.in. Click "DNS" or "Manage DNS".',
+        description: 'Log into godaddy.com, open "My Products" and locate sriinfradevlopers.in. Click "DNS" or "Manage DNS".',
       },
       {
         stepNumber: 2,
@@ -109,7 +109,7 @@ export const REGISTRAR_GUIDES: RegistrarGuideItem[] = [
       {
         stepNumber: 5,
         title: 'Wait 5-15 mins & Recheck GitHub Pages',
-        description: 'Return to your GitHub Repository > Settings > Pages. Click "Check again" or re-enter "sriinfradevelopers.in" and click Save.',
+        description: 'Return to your GitHub Repository > Settings > Pages. Click "Check again" or re-enter "sriinfradevlopers.in" and click Save.',
       },
     ],
   },
@@ -118,12 +118,12 @@ export const REGISTRAR_GUIDES: RegistrarGuideItem[] = [
     name: 'Hostinger',
     logoIcon: 'Server',
     popularIn: 'Very Popular for .in Domains',
-    notes: 'In Hostinger hPanel, access Domains -> sriinfradevelopers.in -> DNS / Nameservers -> Manage DNS Records.',
+    notes: 'In Hostinger hPanel, access Domains -> sriinfradevlopers.in -> DNS / Nameservers -> Manage DNS Records.',
     instructions: [
       {
         stepNumber: 1,
         title: 'Open Hostinger hPanel DNS Manager',
-        description: 'Go to hpanel.hostinger.com -> Domains -> sriinfradevelopers.in -> DNS / Nameservers.',
+        description: 'Go to hpanel.hostinger.com -> Domains -> sriinfradevlopers.in -> DNS / Nameservers.',
       },
       {
         stepNumber: 2,
@@ -157,7 +157,7 @@ export const REGISTRAR_GUIDES: RegistrarGuideItem[] = [
       {
         stepNumber: 1,
         title: 'Access BigRock Control Panel',
-        description: 'Log into bigrock.in, click on "sriinfradevelopers.in" and find "DNS Management" in the right sidebar.',
+        description: 'Log into bigrock.in, click on "sriinfradevlopers.in" and find "DNS Management" in the right sidebar.',
       },
       {
         stepNumber: 2,
@@ -186,7 +186,7 @@ export const REGISTRAR_GUIDES: RegistrarGuideItem[] = [
       {
         stepNumber: 1,
         title: 'Navigate to DNS Records',
-        description: 'Select sriinfradevelopers.in in your Cloudflare dashboard and click the "DNS" tab.',
+        description: 'Select sriinfradevlopers.in in your Cloudflare dashboard and click the "DNS" tab.',
       },
       {
         stepNumber: 2,
@@ -211,7 +211,7 @@ export const REGISTRAR_GUIDES: RegistrarGuideItem[] = [
       {
         stepNumber: 1,
         title: 'Open Advanced DNS',
-        description: 'In Namecheap dashboard, click "Manage" next to sriinfradevelopers.in and go to the "Advanced DNS" tab.',
+        description: 'In Namecheap dashboard, click "Manage" next to sriinfradevlopers.in and go to the "Advanced DNS" tab.',
       },
       {
         stepNumber: 2,
@@ -231,7 +231,7 @@ export const TROUBLESHOOTING_CHECKLIST = [
   {
     id: 'cname-file',
     title: '1. CNAME file in repository root',
-    description: 'Ensure your GitHub repository has a file named "CNAME" (all uppercase, no extension) in the root of the "main" or "gh-pages" branch containing exact text: sriinfradevelopers.in',
+    description: 'Ensure your GitHub repository has a file named "CNAME" (all uppercase, no extension) in the root of the "main" or "gh-pages" branch containing exact text: sriinfradevlopers.in',
     status: 'important',
   },
   {
@@ -243,7 +243,7 @@ export const TROUBLESHOOTING_CHECKLIST = [
   {
     id: 'cname-record',
     title: '3. CNAME record for "www" subdomain',
-    description: 'Ensure www points to sriinfra2025-ops.github.io so both sriinfradevelopers.in and www.sriinfradevelopers.in work seamlessly.',
+    description: 'Ensure www points to sriinfra2025-ops.github.io so both sriinfradevlopers.in and www.sriinfradevlopers.in work seamlessly.',
     status: 'required',
   },
   {

@@ -40,7 +40,7 @@ export const COMPANY_INFO = {
   phone: '+91 98490 12345 / +91 80080 67890',
   whatsapp: '919849012345',
   githubRepo: 'https://github.com/sriinfra2025-ops/sriinfra2025-ops.github.io',
-  customDomain: 'sriinfradevelopers.in',
+  customDomain: 'sriinfradevlopers.in',
   githubPagesUrl: 'sriinfra2025-ops.github.io',
   address: 'Opp. Function Hall, Keshavapuram Road, Pindiprolu Village, Tirumalayapalem Mandal, Khammam District, Beside Khammam-Warangal National Highway, Telangana.',
 };
