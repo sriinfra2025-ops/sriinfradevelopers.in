@@ -203,11 +203,11 @@ export const PROPERTY_PROJECTS: PropertyProject[] = [
   },
   {
     id: 'sri-infra-commercial-frontage',
-    title: 'Sri Infra Highway Commercial Frontage',
+    title: 'Sri Infra Highway Frontage',
     tagline: 'High Return Commercial Plots on Khammam-Warangal National Highway',
     category: 'Commercial',
     location: 'Khammam to Warangal National Highway Junction',
-    pricePerSqYd: '₹8,999',
+    pricePerSqYd: '₹6,999',
     totalPlots: 30,
     availablePlots: 7,
     approvals: ['Commercial Zoning Proposed DTCP', 'Clear Title Documentation', 'Spot Registry'],
