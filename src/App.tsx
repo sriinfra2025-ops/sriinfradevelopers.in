@@ -1,229 +1,41 @@
-/**
- * @license
- * SPDX-License-Identifier: Apache-2.0
- */
-
-import React, { useState, useEffect } from 'react';
-import { TestGalleryMainView } from './components/TestGalleryMainView';
-import { Navbar } from './components/Navbar';
-import { HeroSection } from './components/HeroSection';
-import { BrochureShowcase } from './components/BrochureShowcase';
-import { MasterPlanViewer } from './components/MasterPlanViewer';
-import { DailyUpdatesSection } from './components/DailyUpdatesSection';
-import { WhyChooseUs } from './components/WhyChooseUs';
-import { ContactSection } from './components/ContactSection';
-import { Footer } from './components/Footer';
-import { SiteVisitModal } from './components/SiteVisitModal';
-import { DnsTroubleshooter } from './components/DnsTroubleshooter';
-import { AdminPortalView } from './components/AdminPortalView';
-import { LayoutGrid, Camera, Eye } from 'lucide-react';
+import React, { useState } from 'react';
+import { ArrowRight, Building2, CheckCircle2, MapPin, Menu, Phone, ShieldCheck, X } from 'lucide-react';
+import { CleanDailyGallery } from './components/CleanDailyGallery';
+import { COMPANY_INFO, PROPERTY_PROJECTS } from './data/properties';
 
 export default function App() {
-  const [language, setLanguage] = useState<'te' | 'en'>('te');
-  const [isSiteVisitModalOpen, setIsSiteVisitModalOpen] = useState<boolean>(false);
-  const [selectedProjectForModal, setSelectedProjectForModal] = useState<string | undefined>(undefined);
-  const [showDnsDoctor, setShowDnsDoctor] = useState<boolean>(false);
-  
-  // View mode: 'test-gallery' (default simplified test view) or 'full-venture' (full brochure/layout view)
-  const [viewMode, setViewMode] = useState<'test-gallery' | 'full-venture'>('test-gallery');
+  const [menu, setMenu] = useState(false);
+  const [lang, setLang] = useState<'te' | 'en'>('te');
+  const project = PROPERTY_PROJECTS[0];
+  const phone = COMPANY_INFO.phone.split('/')[0].trim();
+  const scroll = (id: string) => { document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' }); setMenu(false); };
 
-  const checkIsAdminRoute = () => {
-    const path = window.location.pathname.toLowerCase();
-    const hash = window.location.hash.toLowerCase();
-    const search = window.location.search.toLowerCase();
-    return (
-      path.includes('/admin') ||
-      path.endsWith('/admin') ||
-      path.endsWith('/admin/') ||
-      hash === '#admin' ||
-      hash.includes('admin') ||
-      search.includes('admin')
-    );
-  };
-
-  const [isAdminRoute, setIsAdminRoute] = useState<boolean>(checkIsAdminRoute);
-
-  useEffect(() => {
-    const handleUrlChange = () => {
-      setIsAdminRoute(checkIsAdminRoute());
-    };
-
-    const handleKeyDown = (e: KeyboardEvent) => {
-      if ((e.ctrlKey || e.metaKey) && e.shiftKey && e.key.toLowerCase() === 'a') {
-        e.preventDefault();
-        window.location.hash = '#admin';
-        setIsAdminRoute(true);
-      }
-    };
-
-    const handleOpenAdminCustom = () => {
-      window.location.hash = '#admin';
-      setIsAdminRoute(true);
-    };
-
-    window.addEventListener('popstate', handleUrlChange);
-    window.addEventListener('hashchange', handleUrlChange);
-    window.addEventListener('keydown', handleKeyDown);
-    window.addEventListener('sri_infra_open_admin_portal', handleOpenAdminCustom);
-
-    return () => {
-      window.removeEventListener('popstate', handleUrlChange);
-      window.removeEventListener('hashchange', handleUrlChange);
-      window.removeEventListener('keydown', handleKeyDown);
-      window.removeEventListener('sri_infra_open_admin_portal', handleOpenAdminCustom);
-    };
-  }, []);
-
-  const handleExitAdmin = () => {
-    setIsAdminRoute(false);
-    if (window.location.hash.includes('admin')) {
-      window.location.hash = '';
-    }
-    if (window.location.pathname.includes('/admin')) {
-      window.history.pushState({}, '', '/');
-    }
-  };
-
-  // If visiting /admin, render Admin Portal
-  if (isAdminRoute) {
-    return <AdminPortalView onExitAdmin={handleExitAdmin} />;
-  }
-
-  const handleOpenSiteVisit = (projectTitle?: string) => {
-    setSelectedProjectForModal(projectTitle);
-    setIsSiteVisitModalOpen(true);
-  };
-
-  const handleScrollToDailyUpdates = () => {
-    const el = document.getElementById('daily-updates');
-    el?.scrollIntoView({ behavior: 'smooth' });
-  };
-
-  const handleScrollToBrochure = () => {
-    const el = document.getElementById('official-brochure');
-    el?.scrollIntoView({ behavior: 'smooth' });
-  };
-
-  return (
-    <div className="min-h-screen bg-slate-950 text-slate-100 flex flex-col font-sans">
-      
-      {/* Top Floating View Switcher Bar for Quick Testing */}
-      <div className="bg-slate-900 border-b border-slate-800 py-1.5 px-4 sticky top-0 z-40 shadow">
-        <div className="max-w-6xl mx-auto flex items-center justify-between text-xs">
-          <div className="flex items-center gap-2">
-            <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
-            <span className="text-slate-300 font-semibold hidden sm:inline">Active Mode:</span>
-            <span className="text-amber-400 font-bold">
-              {viewMode === 'test-gallery' ? 'Live Gallery & Main Page' : 'Full Venture Layout'}
-            </span>
-          </div>
-
-          <div className="flex items-center gap-1.5">
-            <button
-              onClick={() => setViewMode('test-gallery')}
-              className={`px-3 py-1 rounded-lg font-bold text-xs flex items-center gap-1 cursor-pointer transition ${
-                viewMode === 'test-gallery'
-                  ? 'bg-amber-500 text-slate-950 shadow'
-                  : 'bg-slate-800 text-slate-300 hover:text-white'
-              }`}
-            >
-              <Camera className="w-3.5 h-3.5" />
-              <span>Main Page & Gallery</span>
-            </button>
-
-            <button
-              onClick={() => setViewMode('full-venture')}
-              className={`px-3 py-1 rounded-lg font-bold text-xs flex items-center gap-1 cursor-pointer transition ${
-                viewMode === 'full-venture'
-                  ? 'bg-amber-500 text-slate-950 shadow'
-                  : 'bg-slate-800 text-slate-300 hover:text-white'
-              }`}
-            >
-              <LayoutGrid className="w-3.5 h-3.5" />
-              <span>Full Venture View</span>
-            </button>
-          </div>
-        </div>
+  return <div className="min-h-screen bg-white text-slate-950">
+    <header className="sticky top-0 z-50 border-b border-slate-200/80 bg-white/95 backdrop-blur">
+      <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
+        <button onClick={() => scroll('top')} className="flex items-center gap-3 text-left"><span className="grid h-10 w-10 place-items-center rounded-xl bg-slate-950 text-amber-400"><Building2 className="h-5 w-5" /></span><span><span className="block text-sm font-black leading-none">SRI INFRA</span><span className="block text-[9px] font-bold uppercase tracking-[0.2em] text-slate-400">Developers & Constructions</span></span></button>
+        <nav className="hidden items-center gap-7 md:flex"><button onClick={() => scroll('projects')} className="text-sm font-bold text-slate-600 hover:text-slate-950">Projects</button><button onClick={() => scroll('daily-updates')} className="text-sm font-bold text-slate-600 hover:text-slate-950">Daily Updates</button><button onClick={() => scroll('contact')} className="text-sm font-bold text-slate-600 hover:text-slate-950">Contact</button><button onClick={() => setLang(lang === 'te' ? 'en' : 'te')} className="rounded-full border border-slate-200 px-3 py-1.5 text-xs font-black">{lang === 'te' ? 'EN' : 'తెలుగు'}</button></nav>
+        <div className="flex items-center gap-2"><a href={`tel:${phone}`} className="hidden items-center gap-2 rounded-xl bg-amber-400 px-4 py-2.5 text-xs font-black md:flex"><Phone className="h-3.5 w-3.5" /> Call Now</a><button onClick={() => setMenu(!menu)} className="rounded-xl border p-2 md:hidden">{menu ? <X /> : <Menu />}</button></div>
       </div>
+      {menu && <div className="border-t bg-white p-4 md:hidden"><div className="grid gap-2"><button onClick={() => scroll('projects')} className="rounded-xl px-4 py-3 text-left font-bold">Projects</button><button onClick={() => scroll('daily-updates')} className="rounded-xl px-4 py-3 text-left font-bold">Daily Updates</button><button onClick={() => scroll('contact')} className="rounded-xl px-4 py-3 text-left font-bold">Contact</button></div></div>}
+    </header>
 
-      {/* Main View Content */}
-      {viewMode === 'test-gallery' ? (
-        <TestGalleryMainView
-          language={language}
-          setLanguage={setLanguage}
-        />
-      ) : (
-        <div className="flex-1 flex flex-col">
-          {/* Top Navbar */}
-          <Navbar
-            onBookSiteVisit={() => handleOpenSiteVisit()}
-            language={language}
-            setLanguage={setLanguage}
-          />
-
-          {/* Full Main Content */}
-          <main className="flex-1">
-            {showDnsDoctor ? (
-              <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
-                <div className="mb-6 flex items-center justify-between">
-                  <h2 className="text-2xl font-bold text-white">DNS Configuration Doctor</h2>
-                  <button
-                    onClick={() => setShowDnsDoctor(false)}
-                    className="px-4 py-2 bg-amber-500 text-slate-950 font-bold rounded-xl text-xs"
-                  >
-                    Back to Website
-                  </button>
-                </div>
-                <DnsTroubleshooter />
-              </div>
-            ) : (
-              <div>
-                {/* 1. Hero Section */}
-                <HeroSection
-                  onExploreVentures={handleScrollToDailyUpdates}
-                  onBookSiteVisit={() => handleOpenSiteVisit()}
-                  onOpenBrochure={handleScrollToBrochure}
-                  language={language}
-                />
-
-                {/* 2. Official Authentic Brochure Showcase */}
-                <BrochureShowcase
-                  onBookSiteVisit={() => handleOpenSiteVisit('Sri Infra Highway County (Pindiprolu Venture)')}
-                  language={language}
-                  setLanguage={setLanguage}
-                />
-
-                {/* 3. Daily Updates & Easy Photo Loader */}
-                <DailyUpdatesSection language={language} />
-
-                {/* 4. Master Layout & Plot Booking Section */}
-                <MasterPlanViewer
-                  onSelectPlot={(plot) => {
-                    handleOpenSiteVisit(`Plot ${plot.plotNumber} (${plot.sizeSqYd} Sq.Yds, ${plot.facing})`);
-                  }}
-                  language={language}
-                />
-
-                {/* 5. Why Choose Us */}
-                <WhyChooseUs language={language} />
-
-                {/* 6. Contact Section */}
-                <ContactSection language={language} />
-              </div>
-            )}
-          </main>
-
-          {/* Footer */}
-          <Footer onOpenDnsDoctor={() => setShowDnsDoctor(true)} />
+    <main id="top">
+      <section className="relative overflow-hidden bg-slate-950 text-white">
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_75%_25%,rgba(245,158,11,.18),transparent_32%),radial-gradient(circle_at_20%_80%,rgba(14,165,233,.12),transparent_30%)]" />
+        <div className="relative mx-auto grid min-h-[680px] max-w-7xl items-center gap-12 px-4 py-16 sm:px-6 lg:grid-cols-2 lg:px-8">
+          <div><div className="inline-flex items-center gap-2 rounded-full border border-amber-400/30 bg-amber-400/10 px-4 py-2 text-[11px] font-black uppercase tracking-[0.18em] text-amber-300"><ShieldCheck className="h-4 w-4" /> Clear title • Development updates</div><p className="mt-7 text-lg font-bold text-amber-400">{COMPANY_INFO.nameTelugu}</p><h1 className="mt-2 text-4xl font-black leading-[1.05] tracking-tight sm:text-6xl">{lang === 'te' ? 'మీ పెట్టుబడికి సరైన స్థలం.' : 'A better place for your investment.'}</h1><p className="mt-6 max-w-xl text-base leading-7 text-slate-300 sm:text-lg">{project.tagline}. Khammam–Warangal Highway corridor, Pindiprolu. Explore the project and follow real site progress through our daily photo diary.</p><div className="mt-8 flex flex-wrap gap-3"><button onClick={() => scroll('daily-updates')} className="inline-flex items-center gap-2 rounded-2xl bg-amber-400 px-6 py-4 text-sm font-black text-slate-950 shadow-xl shadow-amber-400/20">View Daily Photos <ArrowRight className="h-4 w-4" /></button><a href={`tel:${phone}`} className="inline-flex items-center gap-2 rounded-2xl border border-slate-700 bg-slate-900 px-6 py-4 text-sm font-black text-white">Book a Site Visit</a></div><div className="mt-9 flex flex-wrap gap-3 text-xs font-bold text-slate-300"><span className="rounded-xl bg-white/5 px-3 py-2">40 & 33 ft BT Roads</span><span className="rounded-xl bg-white/5 px-3 py-2">Underground Drainage</span><span className="rounded-xl bg-white/5 px-3 py-2">Weekend Homes</span></div></div>
+          <div className="relative"><div className="overflow-hidden rounded-[2rem] border border-white/10 bg-white/5 p-2 shadow-2xl"><img src={project.image} alt={project.title} className="aspect-[4/3] w-full rounded-[1.5rem] object-cover" /><div className="p-5"><div className="flex items-center gap-2 text-xs font-bold text-slate-400"><MapPin className="h-4 w-4 text-amber-400" /> {project.location}</div><div className="mt-4 flex items-end justify-between"><div><p className="text-xs text-slate-400">Launch price</p><p className="text-3xl font-black text-amber-400">{project.pricePerSqYd}<span className="text-xs text-slate-300"> / Sq. Yd</span></p></div><span className="rounded-xl bg-white/10 px-3 py-2 text-xs font-black">{project.sizeRange}</span></div></div></div></div>
         </div>
-      )}
+      </section>
 
-      {/* Free Site Visit & AC Cab Booking Modal */}
-      <SiteVisitModal
-        isOpen={isSiteVisitModalOpen}
-        onClose={() => setIsSiteVisitModalOpen(false)}
-        defaultProjectTitle={selectedProjectForModal}
-      />
-    </div>
-  );
+      <section id="projects" className="bg-slate-50 py-20"><div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8"><div className="max-w-2xl"><p className="text-xs font-black uppercase tracking-[0.25em] text-amber-600">Our projects</p><h2 className="mt-2 text-3xl font-black sm:text-5xl">Simple information. No clutter.</h2><p className="mt-4 text-slate-500">A cleaner project overview so visitors can understand the location, price, features and availability quickly.</p></div><div className="mt-10 grid gap-5 lg:grid-cols-3">{PROPERTY_PROJECTS.map((p) => <article key={p.id} className="overflow-hidden rounded-3xl border border-slate-200 bg-white shadow-sm"><img src={p.image} alt={p.title} loading="lazy" className="aspect-[16/10] w-full object-cover" /><div className="p-6"><span className="rounded-full bg-amber-50 px-3 py-1 text-[10px] font-black uppercase text-amber-700">{p.category}</span><h3 className="mt-3 text-xl font-black">{p.title}</h3><p className="mt-2 text-sm text-slate-500">{p.location}</p><div className="mt-5 grid gap-2">{p.features.slice(0, 4).map((f) => <div key={f} className="flex gap-2 text-xs font-bold text-slate-600"><CheckCircle2 className="h-4 w-4 shrink-0 text-emerald-500" />{f}</div>)}</div><div className="mt-6 border-t pt-4"><span className="text-xs text-slate-400">From</span><div className="text-2xl font-black">{p.pricePerSqYd}</div></div></div></article>)}</div></div></section>
+
+      <CleanDailyGallery />
+
+      <section id="contact" className="bg-slate-950 py-20 text-white"><div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8"><div className="grid gap-10 lg:grid-cols-2 lg:items-center"><div><p className="text-xs font-black uppercase tracking-[0.25em] text-amber-400">Visit Sri Infra</p><h2 className="mt-2 text-3xl font-black sm:text-5xl">See the site. Ask questions. Decide with confidence.</h2><p className="mt-5 max-w-xl leading-7 text-slate-400">Book a site visit or call the team for current availability, documents and project details.</p></div><div className="rounded-3xl border border-white/10 bg-white/5 p-6"><div className="flex items-start gap-4"><span className="grid h-12 w-12 shrink-0 place-items-center rounded-2xl bg-amber-400 text-slate-950"><MapPin /></span><div><p className="font-black">Project Location</p><p className="mt-1 text-sm leading-6 text-slate-400">{project.location}</p></div></div><div className="mt-6 flex flex-wrap gap-3"><a href={`tel:${phone}`} className="rounded-xl bg-amber-400 px-5 py-3 text-sm font-black text-slate-950">Call {phone}</a><a href={`https://wa.me/${COMPANY_INFO.whatsapp.replace(/\D/g, '')}`} target="_blank" rel="noreferrer" className="rounded-xl border border-white/15 px-5 py-3 text-sm font-black">WhatsApp</a></div></div></div></div></section>
+    </main>
+
+    <footer className="border-t border-slate-200 bg-white py-7"><div className="mx-auto flex max-w-7xl flex-col gap-2 px-4 text-xs text-slate-500 sm:flex-row sm:items-center sm:justify-between sm:px-6 lg:px-8"><span>© {new Date().getFullYear()} Sri Infra Developers & Constructions</span><span>Built for a faster, cleaner daily-updates experience.</span></div></footer>
+  </div>;
 }
