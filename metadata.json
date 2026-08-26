@@ -1,8 +1,0 @@
-{
-  "name": "Sri Infra Developers & Constructions Portal",
-  "description": "Official portal for Sri Infra Developers & Constructions showcasing DTCP approved open plots, weekend guest homes, master layout viewer, daily site photo feed, and DNS configuration doctor.",
-  "requestFramePermissions": [],
-  "majorCapabilities": [
-    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
-  ]
-}
