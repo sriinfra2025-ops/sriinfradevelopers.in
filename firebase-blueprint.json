@@ -1,0 +1,58 @@
+{
+  "entities": {
+    "VenturePhoto": {
+      "title": "VenturePhoto",
+      "description": "Uploaded site progress and venture showcase photos",
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Unique photo update identifier"
+        },
+        "propertyId": {
+          "type": "string",
+          "description": "Associated venture or property ID"
+        },
+        "propertyName": {
+          "type": "string",
+          "description": "Name of the venture"
+        },
+        "date": {
+          "type": "string",
+          "description": "Date of the photo / update"
+        },
+        "imageUrl": {
+          "type": "string",
+          "description": "High resolution image data URL or web URL"
+        },
+        "title": {
+          "type": "string",
+          "description": "Photo title or headline"
+        },
+        "description": {
+          "type": "string",
+          "description": "Telugu / English description of progress"
+        },
+        "category": {
+          "type": "string",
+          "description": "Category such as Venture Arch, Roads, Plots, Guest House, etc."
+        },
+        "author": {
+          "type": "string",
+          "description": "Sri Infra Official"
+        },
+        "createdAt": {
+          "type": "string",
+          "description": "Timestamp ISO string"
+        }
+      },
+      "required": ["id", "imageUrl", "title"]
+    }
+  },
+  "firestore": {
+    "/venture_photos/{photoId}": {
+      "schema": "VenturePhoto",
+      "description": "Collection of real-time venture site photos visible to all site visitors"
+    }
+  }
+}
