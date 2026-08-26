@@ -10,7 +10,7 @@ export const COMPANY_INFO = {
   subQuote: 'మీ యొక్క స్వల్ప పెట్టుబడి మీ భవిష్యత్తుకు బంగారు బాట ....',
   subQuoteEn: 'Your small investment is the golden pathway to your prosperous future.',
   managingDirector: {
-    name: 'Srinivas Bhoga',
+    name: 'Srinivas Boga',
     nameTelugu: 'శ్రీనివాసు భోగ',
     title: 'Managing Director',
     titleTelugu: 'మేనేజింగ్ డైరెక్టర్',
@@ -172,8 +172,7 @@ export const PROPERTY_PROJECTS: PropertyProject[] = [
       'Avenue Plantation & Children Park',
       'Weekend Homes & House Construction Available',
     ],
-    image: 'https://images.unsplash.com/photo-1580587771525-78b9dba3b914?auto=format&fit=crop&w=1000&q=80',
-    highlight: 'Special Launch Offer: Only ₹5,999/- Per Sq. Yd (Beside Khammam to Warangal NH)',
+    image: 'https://lh3.googleusercontent.com/d/10bmZLL2XG6ylkW-J7wVOnFEfDHIiAno8',    highlight: 'Special Launch Offer: Only ₹5,999/- Per Sq. Yd (Beside Khammam to Warangal NH)',
     sizeRange: '150 to 500 Sq. Yards',
     reraNumber: 'PROPOSED-DTCP-TELANGANA',
     launchYear: '2026 Launch (Special Offer)',
@@ -219,7 +218,8 @@ export const PROPERTY_PROJECTS: PropertyProject[] = [
       'Central Street Lights & High Voltage Lines',
       'Rapid Capital Multiplication Zone',
     ],
-    image: 'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=1000&q=80',
+    image: 'https://lh3.googleusercontent.com/d/10bmZLL2XG6ylkW-J7wVOnFEfDHIiAno8', 
+    
     highlight: 'Prime Highway Access • High Commercial Rental Yields',
     sizeRange: '300 to 1500 Sq. Yards',
     reraNumber: 'COM-NH-KHM-WGL',
