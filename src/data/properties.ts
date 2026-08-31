@@ -228,36 +228,9 @@ export const PROPERTY_PROJECTS: PropertyProject[] = [
 ];
 
 export const INITIAL_DAILY_UPDATES: DailyUpdate[] = [
-  {
-    id: 'update-1',
-    title: '40-Feet & 33-Feet Black Top Road Asphalting Work in Progress',
-    date: 'Today',
-    category: 'Road Laying',
-    projectTitle: 'Sri Infra Highway County (Pindiprolu)',
-    description: 'Heavy road compactors and bitumen laying completed on the 40-feet main venture corridor. Kerb stones aligned and central lighting points positioned.',
-    imageUrl: 'https://images.unsplash.com/photo-1541888946425-d0fbb186156f?auto=format&fit=crop&w=1000&q=80',
-    author: 'Srinivas Bhoga (Managing Director)',
-  },
-  {
-    id: 'update-2',
-    title: 'Sri Infra Grand Entrance Arch Construction & Concrete Curing',
-    date: 'Yesterday',
-    category: 'Entrance Arch',
-    projectTitle: 'Sri Infra Highway County',
-    description: 'Structure for the grand designer entrance arch with integrated 24/7 security cabin reached final arch height. "SRI INFRA" gold-finish signage frame prepared.',
-    imageUrl: 'https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&w=1000&q=80',
-    author: 'Site Project Engineer',
-  },
-  {
-    id: 'update-3',
-    title: 'Underground Drainage Pipe Laying across All Sectors Completed',
-    date: '2 Days Ago',
-    category: 'Water Tank',
-    projectTitle: 'Sri Infra Venture @ Keshavapuram Rd',
-    description: 'Heavy duty RCC drainage pipes systematically installed along all 40ft and 33ft roads with inspection manholes at every plot intersection.',
-    imageUrl: 'https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&w=1000&q=80',
-    author: 'Civil Operations Team',
-  },
+  
+ 
+ 
   {
     id: 'update-4',
     title: 'Avenue Plantation of 500+ Trees and Greenery Landscaping',
