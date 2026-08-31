@@ -2,7 +2,7 @@ import { PropertyProject, DailyUpdate } from '../types';
 
 export const COMPANY_INFO = {
   name: 'Sri Infra Developers & Constructions',
-  nameTelugu: 'శ్రీ ఇన్ ఫ్రా డెవలపర్స్ & కన్ స్ట్రక్షన్స్',
+  nameTelugu: 'SRI INFRA DEVELOPERS & CONSTRUCTIONS',
   tagline: 'WE BUILT YOUR DREAM GUEST HOUSE',
   taglineTelugu: 'మీ యొక్క పెట్టుబడికి సువర్ణ అవకాశం',
   emotionalQuote: 'మీ యొక్క స్వల్ప పెట్టుబడి ని తీర్చి దిద్ది, అత్యధిక లాభాలను అందించాలని, ఒక దృఢ సంకల్పం, ఒక వినూత్న ప్రయత్నం, ఒక వినూత్న ఒరవడికి శ్రీకారం ..... శ్రీ ఇన్ ఫ్రా',
